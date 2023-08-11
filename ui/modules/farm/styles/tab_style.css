@@ -1,11 +1,11 @@
-/* Estilos gerais */
+/* Estilos Gerais */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
 
-/* Estilos para os cards das fazendas */
+/* Estilos do Card */
 .fazenda-card {
     border: 1px solid #ccc;
     padding: 10px;
@@ -30,7 +30,6 @@ body {
 }
 
 .fazenda-card button {
-    background-color: #333;
     color: white;
     border: none;
     padding: 8px 16px;
@@ -42,14 +41,41 @@ body {
     background-color: yellow; /* Cor de destaque para a fazenda selecionada */
 }
 
-.fazenda-card.selected button {
+.fazenda-card.selected .select-button {
     background-color: green; /* Cor de destaque para o botão selecionado */
 }
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+.edit-button, .delete-button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.select-button {
+    background-color: #333; /* Verde permanente */
+    color: #fff;
+}
+
+.edit-button {
+    background-color: #00cc00; /* Verde permanente */
+    color: #fff;
+}
+
+.delete-button {
+    background-color: #cc0000; /* Vermelho permanente */
+    color: #fff;
+}
+
+.card-buttons {
+    /* ... (outros estilos) */
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-space {
+    width: 10px; /* Espaço entre os botões */
 }
 
 
