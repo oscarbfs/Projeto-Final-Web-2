@@ -33,7 +33,7 @@ class FarmTile {
         $card .= '<div class="card-buttons">';
         $card .= '<button class="delete-button">Excluir</button>';
         $card .= '<div class="button-space"></div>'; 
-        $card .= '<a class="edit-button" href="edit_farm.php?farmName=' . urlencode($this->farmName) . '">Editar</a>';
+        $card .= '<a class="edit-button" href="ui/modules/farm/pages/update_farm.php?farmName=' . urlencode($this->farmName) . '">Editar</a>';
         $card .= '</div>';
         $card .= '</div>';
     
