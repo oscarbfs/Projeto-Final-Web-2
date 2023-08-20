@@ -1,8 +1,8 @@
 <?php
-require_once '../configs/dataBase.php';
-require_once '../services/FarmService.php';
+require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/infra/configs/DBConnection.php';
+require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/infra/services/farm_service.php';
 
-class FarmFacade {
+class FarmBusiness {
     private $dbConnection;
 
     public function __construct() {

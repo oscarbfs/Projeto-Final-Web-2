@@ -1,13 +1,13 @@
 USE farmnote;
 
-CREATE TABLE Farm (
+CREATE TABLE IF NOT EXISTS Farm (
     farmId INT AUTO_INCREMENT PRIMARY KEY,
     farmName VARCHAR(255) NOT NULL,
     farmDescription TEXT,
     farmImage VARCHAR(255)
 );
 
-CREATE TABLE Pasture (
+CREATE TABLE IF NOT EXISTS Pasture (
     pastureId INT AUTO_INCREMENT PRIMARY KEY,
     pastureName VARCHAR(255) NOT NULL,
     pastureDescription VARCHAR(300),
@@ -17,7 +17,7 @@ CREATE TABLE Pasture (
     FOREIGN KEY (farmId) REFERENCES Farm(farmId)
 );
 
-CREATE TABLE Bull (
+CREATE TABLE IF NOT EXISTS Bull (
     bullId INT AUTO_INCREMENT PRIMARY KEY,
     bullName VARCHAR(255) NOT NULL,
     bullDescription VARCHAR(300),

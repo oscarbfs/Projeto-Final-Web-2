@@ -1,5 +1,5 @@
 <?php
-include("../mapper/set_farm_mapper.php");
+require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/domain/models/mapper/set_farm_mapper.php';
 class GetFarmQuery {
     private $farms;
     private $success;
@@ -12,19 +12,27 @@ class GetFarmQuery {
     public static function fromDatabaseResponse($databaseResponse) {
         $farms = [];
         $success = false;
-
+    
         if ($databaseResponse !== null) {
-            $data = json_decode($databaseResponse, true);
             $success = true;
-
-            foreach ($data as $farmData) {
-                $farm = SetFarmMapper::fromJson(json_encode($farmData));
+    
+            while ($row = $databaseResponse->fetch_assoc()) {
+                $farm = SetFarmMapper::fromJson(json_encode($row));
                 $farms[] = $farm;
             }
         }
-
+    
         return new self($farms, $success);
     }
+
+    public function getSucess() {
+        return $this->success;
+    }
+
+    public function getFarms() {
+        return $this->farms;
+    }
+    
 }
 
 

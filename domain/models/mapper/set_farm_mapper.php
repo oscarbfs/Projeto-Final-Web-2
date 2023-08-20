@@ -1,9 +1,9 @@
 <?php
 class SetFarmMapper {
-    private $farmId;
-    private $farmName;
-    private $farmDescription;
-    private $farmImage;
+    public $farmId;
+    public $farmName;
+    public $farmDescription;
+    public $farmImage;
 
     public function __construct($farmId, $farmName, $farmDescription, $farmImage) {
         $this->farmId = $farmId;

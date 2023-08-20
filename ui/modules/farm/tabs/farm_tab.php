@@ -11,22 +11,31 @@
         <div class="search-bar">
             <input type="text" placeholder="Pesquisar...">
         </div>
-        <a href="../../farm/pages/create_farm.php" class="add-button">Adicionar Fazenda</a>
+        <a href="C:/xampp/htdocs/ProjetoFinalWeb2/ui/modules/farm/pages/create_farm.php" class="add-button">Adicionar Fazenda</a>
     </div>
     
     <?php
-    include '../../farm/tiles/farm_tile.php';
-
-    // Simulação de fazendas do banco de dados
-    $fazendas = array(
-        new FarmTile('../../../../assets/fazenda_padrao.jpg', 'Fazenda A', 'Descrição da Fazenda A'),
-        new FarmTile('../../../../assets/fazenda_padrao.jpg', 'Fazenda B', 'Descrição da Fazenda B'),
-        new FarmTile('../../../../assets/fazenda_padrao.jpg', 'Fazenda C', 'Descrição da Fazenda C')
-    );
-
-    foreach ($fazendas as $fazenda) {
-        echo $fazenda->generateCard();
+    include 'C:/xampp/htdocs/ProjetoFinalWeb2/ui/modules/farm/tiles/farm_tile.php';
+    require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/ui/business/farm_business.php';
+    
+    $farmBusiness = new FarmBusiness();
+    
+    try {
+        $searchResult = $farmBusiness->searchFarm(null, null);
+        if ($searchResult->getSucess()) {
+            $fazendas = $searchResult->getFarms();
+        
+            foreach ($fazendas as $fazenda) {
+                $farmTile = new FarmTile($fazenda);
+                echo $farmTile->generateCard();
+            }
+        } else {
+            throw new Exception("Erro na consulta ao banco de dados.", 1);
+        }
+    } catch (\Throwable $th) {
+        echo $th;
     }
+    
     ?>
 </body>
 </html>

@@ -4,14 +4,21 @@ class DBConnection {
     private $connection;
 
     private function __construct() {
-        $this->connection = new mysqli('localhost:3306', 'root', '');
-
-        $createDbQuery = "CREATE DATABASE IF NOT EXISTS farmnote";
-        $this->connection->query($createDbQuery);
-        $this->connection->select_db('farmnote');
+        $this->connection = new mysqli('localhost', 'root', '');
 
         if ($this->connection->connect_error) {
             die("Connection failed: " . $this->connection->connect_error);
+        }
+
+        $createDbQuery = "CREATE DATABASE IF NOT EXISTS farmnote";
+        if ($this->connection->query($createDbQuery) !== true) {
+            die("Error creating database: " . $this->connection->error);
+        }
+
+        $this->connection->select_db('farmnote');
+
+        if ($this->connection->connect_error) {
+            die("Error selecting database: " . $this->connection->connect_error);
         }
     }
 
@@ -25,6 +32,13 @@ class DBConnection {
     public function getConnection() {
         return $this->connection;
     }
+
+    public function closeConnection() {
+        if ($this->connection) {
+            $this->connection->close();
+        }
+    }
 }
+
 
 ?>

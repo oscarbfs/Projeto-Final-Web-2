@@ -7,17 +7,23 @@
 </head>
 <body>
     <?php
-    include('../../../../infra/configs/DBConnection.php');
+    include('C:/xampp/htdocs/ProjetoFinalWeb2/infra/configs/DBConnection.php');
     $connection = DBConnection::getInstance()->getConnection();
-    $sql = file_get_contents('../../../../infra/configs/tables.sql');
-    $connection->multi_query($sql);
+    $sql = file_get_contents('C:/xampp/htdocs/ProjetoFinalWeb2/infra/configs/tables.sql');
+    $queries = explode(";", $sql);
+
+    foreach ($queries as $query) {
+        if (!empty(trim($query))) {
+            $connection->query($query);
+        }
+    }
 
     $pagina = isset($_GET['pagina']) ? $_GET['pagina'] : 'gado';
     
     if ($pagina === 'gado') {
         include('gado.php');
     } elseif ($pagina === 'fazenda') {
-        include('../../farm/tabs/farm_tab.php');
+        include('C:/xampp/htdocs/ProjetoFinalWeb2/ui/modules/farm/tabs/farm_tab.php');
     } elseif ($pagina === 'pasto') {
         include('pasto.php');
     } 

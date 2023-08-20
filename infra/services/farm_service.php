@@ -1,4 +1,7 @@
 <?php
+require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/domain/interfaces/services/farm_interface.php';
+require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/domain/models/querys/farm_query.php';
+
 class FarmService extends IFarmService {
     private $dbConnection;
 
