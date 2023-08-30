@@ -8,25 +8,31 @@
 <body>
     <div class="top-toolbar">
         <h1>Fazendas</h1>
-        <div class="search-bar">
-            <input type="text" placeholder="Pesquisar...">
-        </div>
         <a href="../../farm/pages/create_farm.php" class="add-button">Adicionar Fazenda</a>
     </div>
     
     <?php
     include 'C:/xampp/htdocs/ProjetoFinalWeb2/ui/modules/farm/tiles/farm_tile.php';
     require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/ui/business/farm_business.php';
-    
+
+    require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/infra/configs/session.php';
+    $sessionManager = SessionManager::getInstance();
+    $selectedFarmId = $sessionManager->getSelectedFarmId();
+
     $farmBusiness = new FarmBusiness();
-    
+
     try {
         $searchResult = $farmBusiness->searchFarm(null, null);
         if ($searchResult->getSucess()) {
             $fazendas = $searchResult->getFarms();
-        
+
             foreach ($fazendas as $fazenda) {
                 $farmTile = new FarmTile($fazenda);
+                
+                if ($fazenda->farmId == $selectedFarmId) {
+                    $farmTile->select();
+                }
+
                 echo $farmTile->generateCard();
             }
         } else {
@@ -35,7 +41,7 @@
     } catch (\Throwable $th) {
         echo $th;
     }
-    
+
     ?>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <?php
 
 require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/domain/abstracts/templates/process/create_process_template.php';
-require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/ui/business/farm_business.php'; 
+require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/ui/business/farm_business.php';
 
 class CreateFarmProcess extends CreateProcessTemplate {
     protected function validateData($postData) {
@@ -23,24 +23,43 @@ class CreateFarmProcess extends CreateProcessTemplate {
 
     protected function performCreate($postData) {
         $farmBusiness = new FarmBusiness();
-
-        $createFarmCommand = new CreateFarmCommand(
-            $postData['farmName'], 
-            $postData['farmDescription'], 
-            $postData['farmImage'],
-        );
-
-        if ($farmBusiness->createFarm($createFarmCommand)) {
-            $createResult = [
-                'success' => true,
-                'message' => 'Fazenda criada com sucesso.'
-            ];
+        
+        if (isset($_FILES['farmImage']) && $_FILES['farmImage']['error'] === UPLOAD_ERR_OK) {
+            $uploadDir = 'C:/xampp/htdocs/ProjetoFinalWeb2/uploads/';
+            $uploadFile = $uploadDir . basename($_FILES['farmImage']['name']);
+            
+            if (move_uploaded_file($_FILES['farmImage']['tmp_name'], $uploadFile)) {
+                
+                $createFarmCommand = new CreateFarmCommand(
+                    $postData['farmName'], 
+                    $postData['farmDescription'], 
+                    $uploadFile, 
+                );
+                
+                if ($farmBusiness->createFarm($createFarmCommand)) {
+                    $createResult = [
+                        'success' => true,
+                        'message' => 'Fazenda criada com sucesso.'
+                    ];
+                } else {
+                    $createResult = [
+                        'success' => false,
+                        'message' => 'Ocorreu um erro, fazenda não criada'
+                    ];
+                }
+            } else {
+                $createResult = [
+                    'success' => false,
+                    'message' => 'Erro ao mover o arquivo para o servidor.'
+                ];
+            }
         } else {
             $createResult = [
                 'success' => false,
-                'message' => 'Ocorreu um erro, fazenda não criada'
+                'message' => 'Por favor, selecione uma imagem válida.'
             ];
         }
+
         return $createResult;
     }
 

@@ -20,28 +20,71 @@ class UpdateFarmProcess extends UpdateProcessTemplate {
         return $validationResult;
     }
     
-
     protected function performUpdate($postData) {
         $farmBusiness = new FarmBusiness();
 
-        $updateFarmCommand = new UpdateFarmCommand(
-            $postData['farmId'], 
-            $postData['farmName'], 
-            $postData['farmDescription'], 
-            $postData['farmImage'],
-        );
+        $oldFarmImage = $postData['oldFarmImage']; 
+        $farmId = $postData['farmId'];
+        $farmName = $postData['farmName'];
+        $farmDescription = $postData['farmDescription'];
+        
+        if (isset($_FILES['farmImage']) && $_FILES['farmImage']['error'] === UPLOAD_ERR_OK) {
+            $uploadDir = 'C:/xampp/htdocs/ProjetoFinalWeb2/uploads/';
+            $uploadFile = $uploadDir . basename($_FILES['farmImage']['name']);
+            
+            
+            if (move_uploaded_file($_FILES['farmImage']['tmp_name'], $uploadFile)) {
+                
+                $updateFarmCommand = new UpdateFarmCommand(
+                    $farmId, 
+                    $farmName, 
+                    $farmDescription, 
+                    $uploadFile 
+                );
 
-        if ($farmBusiness->updateFarm($updateFarmCommand)) {
-            $updateResult = [
-                'success' => true,
-                'message' => 'Fazenda editada com sucesso.'
-            ];
+                if ($farmBusiness->updateFarm($updateFarmCommand)) {
+                    
+                    if (file_exists($oldFarmImage)) {
+                        unlink($oldFarmImage);
+                    }
+
+                    $updateResult = [
+                        'success' => true,
+                        'message' => 'Fazenda atualizada com sucesso.'
+                    ];
+                } else {
+                    $updateResult = [
+                        'success' => false,
+                        'message' => 'Ocorreu um erro, fazenda não atualizada'
+                    ];
+                }
+            } else {
+                $updateResult = [
+                    'success' => false,
+                    'message' => 'Erro ao mover o arquivo para o servidor.'
+                ];
+            }
         } else {
-            $updateResult = [
-                'success' => false,
-                'message' => 'Ocorreu um erro, fazenda não editada'
-            ];
+            $updateFarmCommand = new UpdateFarmCommand(
+                $farmId, 
+                $farmName, 
+                $farmDescription, 
+                $oldFarmImage 
+            );
+
+            if ($farmBusiness->updateFarm($updateFarmCommand)) {
+                $updateResult = [
+                    'success' => true,
+                    'message' => 'Fazenda atualizada com sucesso.'
+                ];
+            } else {
+                $updateResult = [
+                    'success' => false,
+                    'message' => 'Ocorreu um erro, fazenda não atualizada'
+                ];
+            }
         }
+
         return $updateResult;
     }
 

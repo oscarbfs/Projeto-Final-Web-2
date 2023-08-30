@@ -19,12 +19,14 @@
                 $selectedFarm = $farmBusiness->searchFarm($selectedFarmId, null)->getFarms()[0];
 
                 if ($selectedFarm) {
+                    $imagePath = str_replace('C:/xampp/htdocs/ProjetoFinalWeb2/', '../../../../', $selectedFarm->farmImage);
                     echo '<form action="../process/update_process_farm.php" method="post" enctype="multipart/form-data">';
                     echo '<input type="hidden" name="farmId" value="' . $selectedFarmId . '">';
+                    echo '<input type="hidden" name="oldFarmImage" value="' . $selectedFarm->farmImage . '">';
                     echo '<label for="farmImage">Imagem da Fazenda:</label>';
                     echo '<input type="file" name="farmImage" id="farmImage" accept="image/*" onchange="updateImagePreview(event)">';
                     echo '<div class="image-preview">';
-                    echo '<img id="imagePreview" src="' . $selectedFarm->farmImage . '" alt="Preview da Imagem">';
+                    echo '<img id="imagePreview" src="' . $imagePath . '" alt="Preview da Imagem">';
                     echo '</div>';
                     echo '<label for="farmName">Nome da Fazenda:</label>';
                     echo '<input type="text" id="farmName" name="farmName" value="' . $selectedFarm->farmName . '" required>';

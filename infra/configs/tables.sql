@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS Pasture (
     pastureName VARCHAR(255) NOT NULL,
     pastureDescription VARCHAR(300),
     pastureStatus ENUM('livre','ocupado','recuperacao'),
-    farmImage VARCHAR(255),
+    pastureImage VARCHAR(255),
     farmId INT,
     FOREIGN KEY (farmId) REFERENCES Farm(farmId)
 );
@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS Bull (
     bullWeightKg DOUBLE,
     bullWeightArroba DOUBLE,
     bullGrowthRate DOUBLE,
-    farmImage VARCHAR(255),
+    bullImage VARCHAR(255),
     farmId INT,
     pastureId INT,
     FOREIGN KEY (pastureId) REFERENCES Pasture(pastureId),

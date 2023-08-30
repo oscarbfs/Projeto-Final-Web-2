@@ -5,7 +5,7 @@ require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/ui/business/farm_business.php';
 
 class DeleteFarmProcess extends DeleteProcessTemplate {
 
-    protected function performDelete($farmId) {
+    protected function performDelete($farmId, $farmImage) {
         $farmBusiness = new FarmBusiness();
 
         $deleteFarmCommand = new DeleteFarmCommand(
@@ -13,6 +13,11 @@ class DeleteFarmProcess extends DeleteProcessTemplate {
         );
 
         if ($farmBusiness->deleteFarm($deleteFarmCommand)) {
+            
+            if (file_exists($farmImage)) {
+                unlink($farmImage);
+            }
+
             $deleteResult = [
                 'success' => true,
                 'message' => 'Fazenda deletada com sucesso.'
@@ -49,6 +54,7 @@ class DeleteFarmProcess extends DeleteProcessTemplate {
 
 $deleteProcess = new DeleteFarmProcess();
 $farmId = $_GET['farmId'];
+$farmImage = $_GET['farmImage'];
 
-$deleteProcess->deleteFarm($farmId);
+$deleteProcess->deleteFarm($farmId, $farmImage);
 ?>
