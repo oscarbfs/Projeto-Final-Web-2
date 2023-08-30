@@ -4,7 +4,7 @@ abstract class CreateProcessTemplate {
         $validationResult = $this->validateData($postData);
 
         if ($validationResult['success']) {
-            $createResult = $this->performEdit($postData);
+            $createResult = $this->performCreate($postData);
             $this->displayMessage($createResult);
         } else {
             $this->displayMessage($validationResult);
@@ -14,7 +14,7 @@ abstract class CreateProcessTemplate {
     }
 
     abstract protected function validateData($postData);
-    abstract protected function performEdit($postData);
+    abstract protected function performCreate($postData);
     abstract protected function displayMessage($result);
     abstract protected function redirectToPreviousPage();
 }

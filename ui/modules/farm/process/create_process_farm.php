@@ -1,9 +1,9 @@
 <?php
 
-require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/domain/abstracts/templates/process/update_process_template.php';
+require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/domain/abstracts/templates/process/create_process_template.php';
 require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/ui/business/farm_business.php'; 
 
-class UpdateFarmProcess extends UpdateProcessTemplate {
+class CreateFarmProcess extends CreateProcessTemplate {
     protected function validateData($postData) {
         if (empty($postData['farmName'])) {
             $validationResult = [
@@ -21,28 +21,27 @@ class UpdateFarmProcess extends UpdateProcessTemplate {
     }
     
 
-    protected function performUpdate($postData) {
+    protected function performCreate($postData) {
         $farmBusiness = new FarmBusiness();
 
-        $updateFarmCommand = new UpdateFarmCommand(
-            $postData['farmId'], 
+        $createFarmCommand = new CreateFarmCommand(
             $postData['farmName'], 
             $postData['farmDescription'], 
             $postData['farmImage'],
         );
 
-        if ($farmBusiness->updateFarm($updateFarmCommand)) {
-            $updateResult = [
+        if ($farmBusiness->createFarm($createFarmCommand)) {
+            $createResult = [
                 'success' => true,
-                'message' => 'Fazenda editada com sucesso.'
+                'message' => 'Fazenda criada com sucesso.'
             ];
         } else {
-            $updateResult = [
+            $createResult = [
                 'success' => false,
-                'message' => 'Ocorreu um erro, fazenda não editada'
+                'message' => 'Ocorreu um erro, fazenda não criada'
             ];
         }
-        return $updateResult;
+        return $createResult;
     }
 
     protected function displayMessage($result) {
@@ -66,8 +65,8 @@ class UpdateFarmProcess extends UpdateProcessTemplate {
     }
 }
 
-$updateProcess = new UpdateFarmProcess();
+$createProcess = new CreateFarmProcess();
 $postData = $_POST;
 
-$updateProcess->updateFarm($postData);
+$createProcess->createFarm($postData);
 ?>

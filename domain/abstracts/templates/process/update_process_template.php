@@ -4,7 +4,7 @@ abstract class UpdateProcessTemplate {
         $validationResult = $this->validateData($postData);
 
         if ($validationResult['success']) {
-            $updateResult = $this->performEdit($postData);
+            $updateResult = $this->performUpdate($postData);
             $this->displayMessage($updateResult);
         } else {
             $this->displayMessage($validationResult);
@@ -14,7 +14,7 @@ abstract class UpdateProcessTemplate {
     }
 
     abstract protected function validateData($postData);
-    abstract protected function performEdit($postData);
+    abstract protected function performUpdate($postData);
     abstract protected function displayMessage($result);
     abstract protected function redirectToPreviousPage();
 }

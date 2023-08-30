@@ -35,6 +35,11 @@
                     echo '<button type="submit">Salvar Edições</button>';
                     echo '</div>';
                     echo '</form>';
+                    echo '<div id="message-dialog" style="display: none;">';
+                    echo '<p id="message-text"></p>';
+                    echo '<button id="close-button">Fechar</button>';
+                    echo '</div>';
+
                 } else {
                     echo 'Fazenda não encontrada.';
                 }
