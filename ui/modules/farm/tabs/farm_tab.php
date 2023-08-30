@@ -11,7 +11,7 @@
         <div class="search-bar">
             <input type="text" placeholder="Pesquisar...">
         </div>
-        <a href="C:/xampp/htdocs/ProjetoFinalWeb2/ui/modules/farm/pages/create_farm.php" class="add-button">Adicionar Fazenda</a>
+        <a href="../../farm/pages/create_farm.php" class="add-button">Adicionar Fazenda</a>
     </div>
     
     <?php

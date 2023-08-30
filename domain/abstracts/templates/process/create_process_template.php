@@ -1,21 +1,22 @@
 <?php
 abstract class CreateProcessTemplate {
-    protected $dbConnection;
+    public function createFarm($postData) {
+        $validationResult = $this->validateData($postData);
 
-    public function __construct($dbConnection) {
-        $this->dbConnection = $dbConnection;
+        if ($validationResult['success']) {
+            $createResult = $this->performEdit($postData);
+            $this->displayMessage($createResult);
+        } else {
+            $this->displayMessage($validationResult);
+        }
+
+        $this->redirectToPreviousPage();
     }
 
-    public function create($command) {
-        $this->validateData($command);
-        $query = $this->generateInsertQuery($command);
-        $this->executeQuery($query);
-        $this->postCreateHook($command);
-    }
-
-    protected function validateData($command) { }
-    protected abstract function generateInsertQuery($command);
-    protected function executeQuery($query) { }
-    protected function postCreateHook($command) { }
+    abstract protected function validateData($postData);
+    abstract protected function performEdit($postData);
+    abstract protected function displayMessage($result);
+    abstract protected function redirectToPreviousPage();
 }
+
 ?>
