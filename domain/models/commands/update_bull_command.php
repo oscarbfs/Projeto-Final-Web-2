@@ -8,12 +8,12 @@ class UpdateBullCommand {
     public $pastureId;
 
     public function __construct($bullId, $bullName, $bullDescription, $bullWeightKg, $bullImage, $pastureId) {
-        $this->bullId = $$bullId;
-        $this->bullName = $$bullName;
-        $this->bullDescription = $$bullDescription;
-        $this->bullWeightKg = $$bullWeightKg;
-        $this->bullImage = $$bullImage;
-        $this->pastureId = $$pastureId;
+        $this->bullId = $bullId;
+        $this->bullName = $bullName;
+        $this->bullDescription = $bullDescription;
+        $this->bullWeightKg = $bullWeightKg;
+        $this->bullImage = $bullImage;
+        $this->pastureId = $pastureId;
     }
 
     public function generateUpdateQuery() {

@@ -40,11 +40,11 @@
             echo '<label for="bullName">Nome da Boi:</label>';
             echo '<input type="text" id="bullName" name="bullName" required>';
             echo '<label for="bullWeight">Peso do Boi (em kg):</label>';
-            echo '<input type="number" id="bullWeight" name="bullWeightKg" required>';
+            echo '<input type="number" id="bullWeightKg" name="bullWeightKg" required>';
             echo '<label for="bullDescription">Descrição da Boi:</label>';
             echo '<textarea id="bullDescription" name="bullDescription" rows="4" required></textarea>';
-            echo '<label for="pastureId">Selecione o Pasto:</label>';
-            echo '<select id="pastureId" name="pastureId">';
+            echo '<label for="bullPastureId">Selecione o Pasto:</label>';
+            echo '<select id="bullPastureId" name="bullPastureId">';
             foreach ($pasturesToSelect as $pasture) {
                 echo '<option value="' . $pasture['id'] . '">' . $pasture['name'] . '</option>';
             }

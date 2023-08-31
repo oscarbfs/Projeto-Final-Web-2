@@ -10,18 +10,23 @@ class CreateBullProcess extends CreateProcessTemplate {
                 'success' => false,
                 'message' => 'Por favor, preencha todos os campos obrigatórios.'
             ];
-        } else if (empty($postData['bullStatus'])) {
+        } else if (empty($postData['bullPastureId'])) {
             $validationResult = [
                 'success' => false,
                 'message' => 'Por favor, preencha todos os campos obrigatórios.'
             ];
-        }else {
+        } else if (empty($postData['bullWeightKg'])) {
+            $validationResult = [
+                'success' => false,
+                'message' => 'Por favor, preencha todos os campos obrigatórios.'
+            ];
+        } else {
             $validationResult = [
                 'success' => true,
                 'message' => 'Dados validados com sucesso.'
             ];
         }
-    
+        
         return $validationResult;
     }
     
@@ -30,7 +35,7 @@ class CreateBullProcess extends CreateProcessTemplate {
         $bullBusiness = new BullBusiness();
         
         if (isset($_FILES['bullImage']) && $_FILES['bullImage']['error'] === UPLOAD_ERR_OK) {
-
+            
             $uploadDir = 'C:/xampp/htdocs/ProjetoFinalWeb2/uploads/';
             $uploadFile = $uploadDir . basename($_FILES['bullImage']['name']);
             
@@ -43,20 +48,20 @@ class CreateBullProcess extends CreateProcessTemplate {
                     $postData['bullName'], 
                     $postData['bullDescription'], 
                     $postData['bullWeightKg'], 
-                    $selectedFarmId,
                     $uploadFile, 
+                    $selectedFarmId,
                     $postData['bullPastureId'], 
                 );
                 
                 if ($bullBusiness->createBull($createBullCommand)) {
                     $createResult = [
                         'success' => true,
-                        'message' => 'Fazenda criada com sucesso.'
+                        'message' => 'Boi criado com sucesso.'
                     ];
                 } else {
                     $createResult = [
                         'success' => false,
-                        'message' => 'Ocorreu um erro, fazenda não criada'
+                        'message' => 'Ocorreu um erro, boi não criado'
                     ];
                 }
             } else {
@@ -98,6 +103,9 @@ class CreateBullProcess extends CreateProcessTemplate {
 
 $createProcess = new CreateBullProcess();
 $postData = $_POST;
+echo $_POST['bullName'];
+echo $_POST['bullWeightKg'];
+echo $_POST['bullPastureId'];
 
 $createProcess->create($postData);
 ?>

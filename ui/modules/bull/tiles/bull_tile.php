@@ -14,7 +14,7 @@ class BullTile {
         $card = '<div class="bull-card">';
         $card .= '<img src="' . $imagePath . '" alt="' . $this->bull->bullName . '" width="150">';
         $card .= '<h3>' . $this->bull->bullName . '</h3>';
-        $card .= '<p>' . $this->bull->bullStatus . '</p>';
+        $card .= '<p>' . $this->bull->bullWeightKg. '</p>';
         $card .= '<a class="detail-button" href="../../bull/pages/detail_bull.php?bullId=' . urlencode($this->bull->bullId) . '">Mais Detalhes</a>';
         $card .= '</div>';
 

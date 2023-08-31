@@ -10,13 +10,13 @@ class SetBullMapper {
      public $pastureId;
 
     public function __construct($bullId, $bullName, $bullDescription, $bullWeightKg, $bullImage, $farmId, $pastureId) {
-        $this->bullId = $$bullId;
-        $this->bullName = $$bullName;
-        $this->bullDescription = $$bullDescription;
-        $this->bullWeightKg = $$bullWeightKg;
-        $this->bullImage = $$bullImage;
-        $this->farmId = $$farmId;
-        $this->pastureId = $$pastureId;
+        $this->bullId = $bullId;
+        $this->bullName = $bullName;
+        $this->bullDescription = $bullDescription;
+        $this->bullWeightKg = $bullWeightKg;
+        $this->bullImage = $bullImage;
+        $this->farmId = $farmId;
+        $this->pastureId = $pastureId;
     }
 
     public static function fromJson($json) {
