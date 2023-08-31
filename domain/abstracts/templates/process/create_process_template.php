@@ -1,6 +1,6 @@
 <?php
 abstract class CreateProcessTemplate {
-    public function createFarm($postData) {
+    public function create($postData) {
         $validationResult = $this->validateData($postData);
 
         if ($validationResult['success']) {

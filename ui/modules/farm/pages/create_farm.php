@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="form-container">
-        <h2>Editar Fazenda</h2>
+        <h2>Criar Fazenda</h2>
         <?php
         require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/ui/business/farm_business.php';
         $farmBusiness = new FarmBusiness();

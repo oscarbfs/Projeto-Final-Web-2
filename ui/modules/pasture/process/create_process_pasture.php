@@ -1,16 +1,21 @@
 <?php
 
 require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/domain/abstracts/templates/process/create_process_template.php';
-require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/ui/business/farm_business.php';
+require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/ui/business/pasture_business.php';
 
-class CreateFarmProcess extends CreateProcessTemplate {
+class CreatePastureProcess extends CreateProcessTemplate {
     protected function validateData($postData) {
-        if (empty($postData['farmName'])) {
+        if (empty($postData['pastureName'])) {
             $validationResult = [
                 'success' => false,
                 'message' => 'Por favor, preencha todos os campos obrigatórios.'
             ];
-        } else {
+        } else if (empty($postData['pastureStatus'])) {
+            $validationResult = [
+                'success' => false,
+                'message' => 'Por favor, preencha todos os campos obrigatórios.'
+            ];
+        }else {
             $validationResult = [
                 'success' => true,
                 'message' => 'Dados validados com sucesso.'
@@ -22,21 +27,27 @@ class CreateFarmProcess extends CreateProcessTemplate {
     
 
     protected function performCreate($postData) {
-        $farmBusiness = new FarmBusiness();
+        $pastureBusiness = new PastureBusiness();
         
-        if (isset($_FILES['farmImage']) && $_FILES['farmImage']['error'] === UPLOAD_ERR_OK) {
+        if (isset($_FILES['pastureImage']) && $_FILES['pastureImage']['error'] === UPLOAD_ERR_OK) {
+
             $uploadDir = 'C:/xampp/htdocs/ProjetoFinalWeb2/uploads/';
-            $uploadFile = $uploadDir . basename($_FILES['farmImage']['name']);
+            $uploadFile = $uploadDir . basename($_FILES['pastureImage']['name']);
             
-            if (move_uploaded_file($_FILES['farmImage']['tmp_name'], $uploadFile)) {
+            if (move_uploaded_file($_FILES['pastureImage']['tmp_name'], $uploadFile)) {
+                require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/infra/configs/session.php';
+                $sessionManager = SessionManager::getInstance();
+                $selectedFarmId = $sessionManager->getSelectedFarmId();
                 
-                $createFarmCommand = new CreateFarmCommand(
-                    $postData['farmName'], 
-                    $postData['farmDescription'], 
+                $createPastureCommand = new CreatePastureCommand(
+                    $selectedFarmId,
+                    $postData['pastureName'], 
+                    $postData['pastureDescription'], 
+                    $postData['pastureStatus'], 
                     $uploadFile, 
                 );
                 
-                if ($farmBusiness->createFarm($createFarmCommand)) {
+                if ($pastureBusiness->createPasture($createPastureCommand)) {
                     $createResult = [
                         'success' => true,
                         'message' => 'Fazenda criada com sucesso.'
@@ -80,11 +91,11 @@ class CreateFarmProcess extends CreateProcessTemplate {
     }
 
     protected function redirectToPreviousPage() {
-        header('Location: ../../main/tabs/main_tab.php?pagina=farm');
+        header('Location: ../../main/tabs/main_tab.php?pagina=pasture');
     }
 }
 
-$createProcess = new CreateFarmProcess();
+$createProcess = new CreatePastureProcess();
 $postData = $_POST;
 
 $createProcess->create($postData);

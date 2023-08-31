@@ -105,7 +105,7 @@ class UpdateFarmProcess extends UpdateProcessTemplate {
     }
 
     protected function redirectToPreviousPage() {
-        header('Location: ../../main/tabs/main_tab.php?pagina=fazenda');
+        header('Location: ../../main/tabs/main_tab.php?pagina=farm');
     }
 }
 

@@ -18,21 +18,21 @@
         }
     }
 
-    $pagina = isset($_GET['pagina']) ? $_GET['pagina'] : 'gado';
+    $pagina = isset($_GET['pagina']) ? $_GET['pagina'] : 'bull';
     
-    if ($pagina === 'gado') {
-        include('gado.php');
-    } elseif ($pagina === 'fazenda') {
+    if ($pagina === 'bull') {
+        include('bull.php');
+    } elseif ($pagina === 'farm') {
         include('C:/xampp/htdocs/ProjetoFinalWeb2/ui/modules/farm/tabs/farm_tab.php');
-    } elseif ($pagina === 'pasto') {
-        include('pasto.php');
+    } elseif ($pagina === 'pasture') {
+        include('C:/xampp/htdocs/ProjetoFinalWeb2/ui/modules/pasture/tabs/pasture_tab.php');
     } 
     ?>
     
     <div class="bottomnav">
-        <a href="?pagina=gado" <?php if ($pagina === 'gado') echo 'class="active"' ?>>Gado</a>
-        <a href="?pagina=pasto" <?php if ($pagina === 'pasto') echo 'class="active"' ?>>Pasto</a>
-        <a href="?pagina=fazenda" <?php if ($pagina === 'fazenda') echo 'class="active"' ?>>Fazenda</a>
+        <a href="?pagina=bull" <?php if ($pagina === 'bull') echo 'class="active"' ?>>Gado</a>
+        <a href="?pagina=pasture" <?php if ($pagina === 'pasture') echo 'class="active"' ?>>Pasto</a>
+        <a href="?pagina=farm" <?php if ($pagina === 'farm') echo 'class="active"' ?>>Fazenda</a>
     </div>
 </body>
 </html>
