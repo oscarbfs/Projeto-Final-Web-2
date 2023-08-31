@@ -1,11 +1,11 @@
 <?php
 
 require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/domain/abstracts/templates/process/update_process_template.php';
-require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/ui/business/farm_business.php'; 
+require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/ui/business/pasture_business.php'; 
 
-class UpdateFarmProcess extends UpdateProcessTemplate {
+class UpdatePastureProcess extends UpdateProcessTemplate {
     protected function validateData($postData) {
-        if (empty($postData['farmName'])) {
+        if (empty($postData['pastureName'])) {
             $validationResult = [
                 'success' => false,
                 'message' => 'Por favor, preencha todos os campos obrigatórios.'
@@ -21,34 +21,38 @@ class UpdateFarmProcess extends UpdateProcessTemplate {
     }
     
     protected function performUpdate($postData) {
-        $farmBusiness = new FarmBusiness();
+        $pastureBusiness = new PastureBusiness();
 
-        $oldFarmImage = $postData['oldFarmImage']; 
-        $farmId = $postData['farmId'];
-        $farmName = $postData['farmName'];
-        $farmDescription = $postData['farmDescription'];
+        $oldPastureImage = $postData['oldPastureImage']; 
+        $pastureId = $postData['pastureId'];
+        $pastureName = $postData['pastureName'];
+        $pastureDescription = $postData['pastureDescription'];
+        $pastureStatus = $postData['pastureStatus'];
         
-        if (isset($_FILES['farmImage']) && $_FILES['farmImage']['error'] === UPLOAD_ERR_OK) {
+        if (isset($_FILES['pastureImage']) && $_FILES['pastureImage']['error'] === UPLOAD_ERR_OK) {
             $uploadDir = 'C:/xampp/htdocs/ProjetoFinalWeb2/uploads/';
-            $uploadFile = $uploadDir . basename($_FILES['farmImage']['name']);
+            $uploadFile = $uploadDir . basename($_FILES['pastureImage']['name']);
+            echo $uploadFile;
+            echo $oldPastureImage;
             
             
-            if (move_uploaded_file($_FILES['farmImage']['tmp_name'], $uploadFile)) {
+            if (move_uploaded_file($_FILES['pastureImage']['tmp_name'], $uploadFile)) {
                 
-                $updateFarmCommand = new UpdateFarmCommand(
-                    $farmId, 
-                    $farmName, 
-                    $farmDescription, 
+                $updatePastureCommand = new UpdatePastureCommand(
+                    $pastureId, 
+                    $pastureName, 
+                    $pastureDescription, 
+                    $pastureStatus, 
                     $uploadFile 
                 );
 
-                if ($farmBusiness->updateFarm($updateFarmCommand)) {
+                if ($pastureBusiness->updatePasture($updatePastureCommand)) {
                     
-                    if (file_exists($oldFarmImage)) {
-                        unlink($oldFarmImage);
+                    if (file_exists($oldPastureImage)) {
+                        unlink($oldPastureImage);
                     }
 
-                    $updateResult = [
+                    $updateResult = [  
                         'success' => true,
                         'message' => 'Fazenda atualizada com sucesso.'
                     ];
@@ -65,14 +69,15 @@ class UpdateFarmProcess extends UpdateProcessTemplate {
                 ];
             }
         } else {
-            $updateFarmCommand = new UpdateFarmCommand(
-                $farmId, 
-                $farmName, 
-                $farmDescription, 
-                $oldFarmImage 
+            $updatePastureCommand = new UpdatePastureCommand(
+                $pastureId, 
+                $pastureName, 
+                $pastureDescription, 
+                $pastureStatus,
+                $oldPastureImage 
             );
 
-            if ($farmBusiness->updateFarm($updateFarmCommand)) {
+            if ($pastureBusiness->updatePasture($updatePastureCommand)) {
                 $updateResult = [
                     'success' => true,
                     'message' => 'Fazenda atualizada com sucesso.'
@@ -105,11 +110,11 @@ class UpdateFarmProcess extends UpdateProcessTemplate {
     }
 
     protected function redirectToPreviousPage() {
-        header('Location: ../../main/tabs/main_tab.php?pagina=farm');
+        header('Location: ../../pasture/pages/detail_pasture.php?pastureId=' . $_POST['pastureId']);
     }
 }
 
-$updateProcess = new UpdateFarmProcess();
+$updateProcess = new UpdatePastureProcess();
 $postData = $_POST;
 
 $updateProcess->update($postData);

@@ -1,11 +1,11 @@
 <?php
 
 require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/domain/abstracts/templates/process/update_process_template.php';
-require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/ui/business/farm_business.php'; 
+require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/ui/business/bull_business.php'; 
 
-class UpdateFarmProcess extends UpdateProcessTemplate {
+class UpdateBullProcess extends UpdateProcessTemplate {
     protected function validateData($postData) {
-        if (empty($postData['farmName'])) {
+        if (empty($postData['bullName'])) {
             $validationResult = [
                 'success' => false,
                 'message' => 'Por favor, preencha todos os campos obrigatórios.'
@@ -21,34 +21,38 @@ class UpdateFarmProcess extends UpdateProcessTemplate {
     }
     
     protected function performUpdate($postData) {
-        $farmBusiness = new FarmBusiness();
+        $bullBusiness = new BullBusiness();
 
-        $oldFarmImage = $postData['oldFarmImage']; 
-        $farmId = $postData['farmId'];
-        $farmName = $postData['farmName'];
-        $farmDescription = $postData['farmDescription'];
+        $oldBullImage = $postData['oldBullImage']; 
+        $bullId = $postData['bullId'];
+        $bullName = $postData['bullName'];
+        $bullDescription = $postData['bullDescription'];
+        $bullStatus = $postData['bullStatus'];
         
-        if (isset($_FILES['farmImage']) && $_FILES['farmImage']['error'] === UPLOAD_ERR_OK) {
+        if (isset($_FILES['bullImage']) && $_FILES['bullImage']['error'] === UPLOAD_ERR_OK) {
             $uploadDir = 'C:/xampp/htdocs/ProjetoFinalWeb2/uploads/';
-            $uploadFile = $uploadDir . basename($_FILES['farmImage']['name']);
+            $uploadFile = $uploadDir . basename($_FILES['bullImage']['name']);
+            echo $uploadFile;
+            echo $oldBullImage;
             
             
-            if (move_uploaded_file($_FILES['farmImage']['tmp_name'], $uploadFile)) {
+            if (move_uploaded_file($_FILES['bullImage']['tmp_name'], $uploadFile)) {
                 
-                $updateFarmCommand = new UpdateFarmCommand(
-                    $farmId, 
-                    $farmName, 
-                    $farmDescription, 
+                $updateBullCommand = new UpdateBullCommand(
+                    $bullId, 
+                    $bullName, 
+                    $bullDescription, 
+                    $bullStatus, 
                     $uploadFile 
                 );
 
-                if ($farmBusiness->updateFarm($updateFarmCommand)) {
+                if ($bullBusiness->updateBull($updateBullCommand)) {
                     
-                    if (file_exists($oldFarmImage)) {
-                        unlink($oldFarmImage);
+                    if (file_exists($oldBullImage)) {
+                        unlink($oldBullImage);
                     }
 
-                    $updateResult = [
+                    $updateResult = [  
                         'success' => true,
                         'message' => 'Fazenda atualizada com sucesso.'
                     ];
@@ -65,14 +69,15 @@ class UpdateFarmProcess extends UpdateProcessTemplate {
                 ];
             }
         } else {
-            $updateFarmCommand = new UpdateFarmCommand(
-                $farmId, 
-                $farmName, 
-                $farmDescription, 
-                $oldFarmImage 
+            $updateBullCommand = new UpdateBullCommand(
+                $bullId, 
+                $bullName, 
+                $bullDescription, 
+                $bullStatus,
+                $oldBullImage 
             );
 
-            if ($farmBusiness->updateFarm($updateFarmCommand)) {
+            if ($bullBusiness->updateBull($updateBullCommand)) {
                 $updateResult = [
                     'success' => true,
                     'message' => 'Fazenda atualizada com sucesso.'
@@ -105,11 +110,11 @@ class UpdateFarmProcess extends UpdateProcessTemplate {
     }
 
     protected function redirectToPreviousPage() {
-        header('Location: ../../main/tabs/main_tab.php?pagina=farm');
+        header('Location: ../../bull/pages/detail_bull.php?bullId=' . $_POST['bullId']);
     }
 }
 
-$updateProcess = new UpdateFarmProcess();
+$updateProcess = new UpdateBullProcess();
 $postData = $_POST;
 
 $updateProcess->update($postData);

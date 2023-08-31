@@ -1,23 +1,23 @@
 <?php
 
 require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/domain/abstracts/templates/process/delete_process_template.php';
-require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/ui/business/farm_business.php'; 
+require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/ui/business/pasture_business.php'; 
 
-class DeleteFarmProcess extends DeleteProcessTemplate {
+class DeletePastureProcess extends DeleteProcessTemplate {
 
-    protected function performDelete($farmId) {
-        $farmBusiness = new FarmBusiness();
+    protected function performDelete($pastureId) {
+        $pastureBusiness = new PastureBusiness();
 
-        $farmImageToDelete = $farmBusiness->searchFarm($farmId, null)->getFarms()[0]->farmImage;
+        $pastureImageToDelete = $pastureBusiness->searchPasture($pastureId, null, null)->getPastures()[0]->pastureImage;
 
-        $deleteFarmCommand = new DeleteFarmCommand(
-            $farmId, 
+        $deletePastureCommand = new DeletePastureCommand(
+            $pastureId, 
         );
 
-        if ($farmBusiness->deleteFarm($deleteFarmCommand)) {
+        if ($pastureBusiness->deletePasture($deletePastureCommand)) {
             
-            if (file_exists($farmImageToDelete)) {
-                unlink($farmImageToDelete);
+            if (file_exists($pastureImageToDelete)) {
+                unlink($pastureImageToDelete);
             }
 
             $deleteResult = [
@@ -50,12 +50,12 @@ class DeleteFarmProcess extends DeleteProcessTemplate {
     }
 
     protected function redirectToPreviousPage() {
-        header('Location: ../../main/tabs/main_tab.php?pagina=farm');
+        header('Location: ../../main/tabs/main_tab.php?pagina=pasture');
     }
 }
 
-$deleteProcess = new DeleteFarmProcess();
-$farmId = $_GET['farmId'];
+$deleteProcess = new DeletePastureProcess();
+$pastureId = $_GET['pastureId'];
 
-$deleteProcess->delete($farmId);
+$deleteProcess->delete($pastureId);
 ?>

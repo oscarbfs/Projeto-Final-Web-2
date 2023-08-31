@@ -1,0 +1,86 @@
+/* Reset de estilos para remover margens e preenchimentos padrão */
+body, h1, p, img {
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para a barra de ferramentas */
+.toolbar {
+    background-color: #007acc; /* Cor de fundo da barra de ferramentas */
+    color: #fff; /* Cor do texto */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.toolbar button {
+    background-color: #007acc; /* Cor de fundo do botão */
+    color: #fff; /* Cor do texto do botão */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.toolbar button:hover {
+    background-color: #005d99; /* Cor de fundo do botão ao passar o mouse */
+}
+
+.toolbar h1 {
+    font-size: 24px;
+}
+
+.update-button {
+    background-color: #007acc;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.update-button:hover {
+    background-color: #005d99;
+}
+
+.back-button {
+    background-color: #007acc;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.back-button:hover {
+    background-color: #005d99;
+}
+
+/* Estilos para o contêiner de detalhes */
+.detail-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.image-container {
+    text-align: center;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+.details h2 {
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+.details p {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.details p:last-child {
+    margin-bottom: 20px;
+}

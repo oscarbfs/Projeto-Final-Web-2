@@ -29,7 +29,7 @@ class GetBullQuery {
         return $this->success;
     }
 
-    public function getFarms() {
+    public function getBulls() {
         return $this->bull;
     }
 }

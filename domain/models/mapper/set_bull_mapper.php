@@ -5,19 +5,15 @@ class SetBullMapper {
      public $bullName;
      public $bullDescription;
      public $bullWeightKg;
-     public $bullWeightArroba;
-     public $bullGrowthRate;
      public $bullImage;
      public $farmId;
      public $pastureId;
 
-    public function __construct($bullId, $bullName, $bullDescription, $bullWeightKg, $bullWeightArroba, $bullGrowthRate, $bullImage, $farmId, $pastureId) {
+    public function __construct($bullId, $bullName, $bullDescription, $bullWeightKg, $bullImage, $farmId, $pastureId) {
         $this->bullId = $$bullId;
         $this->bullName = $$bullName;
         $this->bullDescription = $$bullDescription;
         $this->bullWeightKg = $$bullWeightKg;
-        $this->bullWeightArroba = $$bullWeightArroba;
-        $this->bullGrowthRate = $$bullGrowthRate;
         $this->bullImage = $$bullImage;
         $this->farmId = $$farmId;
         $this->pastureId = $$pastureId;
@@ -30,13 +26,11 @@ class SetBullMapper {
         $bullName = $data['bullName'];
         $bullDescription = $data['bullDescription'];
         $bullWeightKg = $data['bullWeightKg'];
-        $bullWeightArroba = $data['bullWeightArroba'];
-        $bullGrowthRate = $data['bullGrowthRate'];
         $bullImage = $data['bullImage'];
         $farmId = $data['farmId'];
         $pastureId = $data['pastureId'];
 
-        return new self($bullId, $bullName, $bullDescription, $bullWeightKg, $bullWeightArroba, $bullGrowthRate, $bullImage, $farmId, $pastureId);
+        return new self($bullId, $bullName, $bullDescription, $bullWeightKg, $bullImage, $farmId, $pastureId);
     }
 }
 

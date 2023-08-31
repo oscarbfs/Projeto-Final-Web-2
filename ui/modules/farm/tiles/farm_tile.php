@@ -31,7 +31,7 @@ class FarmTile {
         $card .= '<p>' . $this->farm->farmDescription . '</p>';
         $card .= '<button class="select-button" onclick="selectFarm(\'' . $this->farm->farmId . '\')">Selecionar</button>';
         $card .= '<div class="card-buttons">';
-        $card .= '<button class="delete-button" onclick="deleteFarm(\'' . $this->farm->farmId . '\', \'' . $this->farm->farmImage . '\')">Excluir</button>';
+        $card .= '<button class="delete-button" onclick="deleteFarm(\'' . $this->farm->farmId . '\')">Excluir</button>';
         $card .= '<div class="button-space"></div>'; 
         $card .= '<a class="edit-button" href="../../farm/pages/update_farm.php?farmId=' . urlencode($this->farm->farmId) . '">Editar</a>';
         $card .= '</div>';

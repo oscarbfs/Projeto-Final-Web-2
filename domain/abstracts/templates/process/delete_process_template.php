@@ -1,12 +1,12 @@
 <?php
 abstract class DeleteProcessTemplate {
-    public function deleteFarm($postData, $image) {
-        $deleteResult = $this->performDelete($postData, $image);
+    public function delete($postData) {
+        $deleteResult = $this->performDelete($postData);
         $this->displayMessage($deleteResult);
         $this->redirectToPreviousPage();
     }
 
-    abstract protected function performDelete($postData, $image);
+    abstract protected function performDelete($postData);
     abstract protected function displayMessage($result);
     abstract protected function redirectToPreviousPage();
 }

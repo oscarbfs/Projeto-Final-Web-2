@@ -2,20 +2,30 @@
 require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/domain/interfaces/services/bull_interface.php';
 require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/domain/models/querys/bull_query.php';
 
-class FarmService extends IBullService {
+class BullService extends IBullService {
     private $dbConnection;
 
     public function __construct(DBConnection $dbConnection) {
         $this->dbConnection = $dbConnection;
     }
 
-    public function search($bullId, $bullName) {
+    public function search($bullId, $bullFarmId, $bullPastureId, $bullName) {
         $query = "SELECT * FROM Bull WHERE 1";
         $params = array();
 
         if ($bullId !== null) {
             $query .= " AND bullId = ?";
             $params[] = $bullId;
+        }
+
+        if ($bullFarmId !== null) {
+            $query .= " AND farmId = ?";
+            $params[] = $bullFarmId;
+        }
+
+        if ($bullPastureId !== null) {
+            $query .= " AND pastureId = ?";
+            $params[] = $bullPastureId;
         }
 
         if ($bullName !== null) {
@@ -35,9 +45,9 @@ class FarmService extends IBullService {
             $result = $stmt->get_result();
 
             if ($result) {
-                return GetFarmQuery::fromDatabaseResponse($result);
+                return GetBullQuery::fromDatabaseResponse($result);
             } else {
-                return new GetFarmQuery([], false);
+                return new GetBullQuery([], false);
             }
         }
     }

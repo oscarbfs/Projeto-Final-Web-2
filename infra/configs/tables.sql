@@ -22,8 +22,6 @@ CREATE TABLE IF NOT EXISTS Bull (
     bullName VARCHAR(255) NOT NULL,
     bullDescription VARCHAR(300),
     bullWeightKg DOUBLE,
-    bullWeightArroba DOUBLE,
-    bullGrowthRate DOUBLE,
     bullImage VARCHAR(255),
     farmId INT,
     pastureId INT,

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Criar Fazenda</title>
-    <link rel="stylesheet" type="text/css" href="../styles/create_style.css">
-    <script src="../scripts/create_script.js"></script>
+    <title>Editar Fazenda</title>
+    <link rel="stylesheet" type="text/css" href="../styles/update_style.css">
+    <script src="../scripts/update_script.js"></script>
 </head>
 <body>
 <div class="form-container">

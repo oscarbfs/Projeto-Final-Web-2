@@ -21,7 +21,7 @@
     $pagina = isset($_GET['pagina']) ? $_GET['pagina'] : 'bull';
     
     if ($pagina === 'bull') {
-        include('bull.php');
+        include('C:/xampp/htdocs/ProjetoFinalWeb2/ui/modules/bull/tabs/bull_tab.php');
     } elseif ($pagina === 'farm') {
         include('C:/xampp/htdocs/ProjetoFinalWeb2/ui/modules/farm/tabs/farm_tab.php');
     } elseif ($pagina === 'pasture') {

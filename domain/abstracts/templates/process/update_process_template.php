@@ -1,6 +1,6 @@
 <?php
 abstract class UpdateProcessTemplate {
-    public function updateFarm($postData) {
+    public function update($postData) {
         $validationResult = $this->validateData($postData);
 
         if ($validationResult['success']) {
