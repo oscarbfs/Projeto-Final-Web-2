@@ -1,5 +1,5 @@
 <?php
-require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/domain/models/mapper/set_bull_mapper.php';
+require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/domain/models/mapper/set_bull_mapper.php';
 
 class BullTile {
     private SetBullMapper $bull;
@@ -9,7 +9,7 @@ class BullTile {
     }
 
     public function generateCard() {
-        $imagePath = str_replace('C:/xampp/htdocs/ProjetoFinalWeb2/', '../../../../', $this->bull->bullImage);
+        $imagePath = str_replace('/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/', '../../../../', $this->bull->bullImage);
 
         $card = '<div class="bull-card">';
         $card .= '<img src="' . $imagePath . '" alt="' . $this->bull->bullName . '" width="150">';

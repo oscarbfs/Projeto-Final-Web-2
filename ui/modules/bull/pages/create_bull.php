@@ -9,9 +9,9 @@
 <div class="form-container">
         <h2>Criar Boi</h2>
         <?php
-        require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/infra/configs/session.php';
-        require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/ui/business/bull_business.php';
-        require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/ui/business/pasture_business.php';
+        require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/infra/configs/session.php';
+        require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/ui/business/bull_business.php';
+        require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/ui/business/pasture_business.php';
 
         $sessionManager = SessionManager::getInstance();
         $selectedFarmId = $sessionManager->getSelectedFarmId();

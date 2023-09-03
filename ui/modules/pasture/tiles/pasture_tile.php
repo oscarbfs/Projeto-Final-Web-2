@@ -1,5 +1,5 @@
 <?php
-require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/domain/models/mapper/set_pasture_mapper.php';
+require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/domain/models/mapper/set_pasture_mapper.php';
 
 class PastureTile {
     private SetPastureMapper $pasture;
@@ -9,7 +9,7 @@ class PastureTile {
     }
 
     public function generateCard() {
-        $imagePath = str_replace('C:/xampp/htdocs/ProjetoFinalWeb2/', '../../../../', $this->pasture->pastureImage);
+        $imagePath = str_replace('/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/', '../../../../', $this->pasture->pastureImage);
 
         $card = '<div class="pasture-card">';
         $card .= '<img src="' . $imagePath . '" alt="' . $this->pasture->pastureName . '" width="150">';

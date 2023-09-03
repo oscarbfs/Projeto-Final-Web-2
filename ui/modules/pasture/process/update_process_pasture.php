@@ -1,7 +1,7 @@
 <?php
 
-require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/domain/abstracts/templates/process/update_process_template.php';
-require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/ui/business/pasture_business.php'; 
+require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/domain/abstracts/templates/process/update_process_template.php';
+require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/ui/business/pasture_business.php'; 
 
 class UpdatePastureProcess extends UpdateProcessTemplate {
     protected function validateData($postData) {
@@ -30,7 +30,7 @@ class UpdatePastureProcess extends UpdateProcessTemplate {
         $pastureStatus = $postData['pastureStatus'];
         
         if (isset($_FILES['pastureImage']) && $_FILES['pastureImage']['error'] === UPLOAD_ERR_OK) {
-            $uploadDir = 'C:/xampp/htdocs/ProjetoFinalWeb2/uploads/';
+            $uploadDir = '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/uploads/';
             $uploadFile = $uploadDir . basename($_FILES['pastureImage']['name']);
             echo $uploadFile;
             echo $oldPastureImage;

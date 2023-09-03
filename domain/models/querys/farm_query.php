@@ -1,5 +1,5 @@
 <?php
-require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/domain/models/mapper/set_farm_mapper.php';
+require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/domain/models/mapper/set_farm_mapper.php';
 class GetFarmQuery {
     private $farms;
     private $success;

@@ -1,7 +1,7 @@
 <?php
-require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/domain/models/commands/create_farm_command.php';
-require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/domain/models/commands/update_farm_command.php';
-require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/domain/models/commands/delete_farm_command.php';
+require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/domain/models/commands/create_farm_command.php';
+require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/domain/models/commands/update_farm_command.php';
+require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/domain/models/commands/delete_farm_command.php';
 
 abstract class IFarmService {
     abstract public function search($farmId, $farmName);

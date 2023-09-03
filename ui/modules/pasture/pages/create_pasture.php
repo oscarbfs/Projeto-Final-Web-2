@@ -9,7 +9,7 @@
 <div class="form-container">
         <h2>Criar Pasto</h2>
         <?php
-        require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/ui/business/pasture_business.php';
+        require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/ui/business/pasture_business.php';
         $pastureBusiness = new PastureBusiness();
 
         try {

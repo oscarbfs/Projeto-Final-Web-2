@@ -1,7 +1,7 @@
 <?php
 
-require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/domain/abstracts/templates/process/update_process_template.php';
-require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/ui/business/bull_business.php'; 
+require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/domain/abstracts/templates/process/update_process_template.php';
+require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/ui/business/bull_business.php'; 
 
 class UpdateBullProcess extends UpdateProcessTemplate {
     protected function validateData($postData) {
@@ -30,7 +30,7 @@ class UpdateBullProcess extends UpdateProcessTemplate {
         $bullStatus = $postData['bullStatus'];
         
         if (isset($_FILES['bullImage']) && $_FILES['bullImage']['error'] === UPLOAD_ERR_OK) {
-            $uploadDir = 'C:/xampp/htdocs/ProjetoFinalWeb2/uploads/';
+            $uploadDir = '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/uploads/';
             $uploadFile = $uploadDir . basename($_FILES['bullImage']['name']);
             echo $uploadFile;
             echo $oldBullImage;

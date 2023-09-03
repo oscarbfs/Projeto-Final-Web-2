@@ -1,6 +1,6 @@
 <?php
-require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/infra/configs/DBConnection.php';
-require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/infra/services/pasture_service.php';
+require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/infra/configs/DBConnection.php';
+require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/infra/services/pasture_service.php';
 
 class PastureBusiness {
     private $dbConnection;

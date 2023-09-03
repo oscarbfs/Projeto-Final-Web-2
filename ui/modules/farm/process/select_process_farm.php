@@ -1,5 +1,5 @@
 <?php
-require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/infra/configs/session.php';
+require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/infra/configs/session.php';
 
 if (isset($_POST['farmId'])) {
     $farmId = $_POST['farmId'];

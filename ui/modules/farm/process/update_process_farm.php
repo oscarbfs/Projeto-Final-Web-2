@@ -1,7 +1,7 @@
 <?php
 
-require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/domain/abstracts/templates/process/update_process_template.php';
-require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/ui/business/farm_business.php'; 
+require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/domain/abstracts/templates/process/update_process_template.php';
+require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/ui/business/farm_business.php'; 
 
 class UpdateFarmProcess extends UpdateProcessTemplate {
     protected function validateData($postData) {
@@ -29,7 +29,7 @@ class UpdateFarmProcess extends UpdateProcessTemplate {
         $farmDescription = $postData['farmDescription'];
         
         if (isset($_FILES['farmImage']) && $_FILES['farmImage']['error'] === UPLOAD_ERR_OK) {
-            $uploadDir = 'C:/xampp/htdocs/ProjetoFinalWeb2/uploads/';
+            $uploadDir = '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/uploads/';
             $uploadFile = $uploadDir . basename($_FILES['farmImage']['name']);
             
             

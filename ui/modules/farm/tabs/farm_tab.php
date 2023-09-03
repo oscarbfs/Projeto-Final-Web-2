@@ -12,10 +12,10 @@
     </div>
     
     <?php
-    include 'C:/xampp/htdocs/ProjetoFinalWeb2/ui/modules/farm/tiles/farm_tile.php';
-    require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/ui/business/farm_business.php';
+    include '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/ui/modules/farm/tiles/farm_tile.php';
+    require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/ui/business/farm_business.php';
 
-    require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/infra/configs/session.php';
+    require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/infra/configs/session.php';
     $sessionManager = SessionManager::getInstance();
     $selectedFarmId = $sessionManager->getSelectedFarmId();
 

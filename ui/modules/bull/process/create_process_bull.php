@@ -1,7 +1,7 @@
 <?php
 
-require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/domain/abstracts/templates/process/create_process_template.php';
-require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/ui/business/bull_business.php';
+require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/domain/abstracts/templates/process/create_process_template.php';
+require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/ui/business/bull_business.php';
 
 class CreateBullProcess extends CreateProcessTemplate {
     protected function validateData($postData) {
@@ -36,11 +36,11 @@ class CreateBullProcess extends CreateProcessTemplate {
         
         if (isset($_FILES['bullImage']) && $_FILES['bullImage']['error'] === UPLOAD_ERR_OK) {
             
-            $uploadDir = 'C:/xampp/htdocs/ProjetoFinalWeb2/uploads/';
+            $uploadDir = '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/uploads/';
             $uploadFile = $uploadDir . basename($_FILES['bullImage']['name']);
             
             if (move_uploaded_file($_FILES['bullImage']['tmp_name'], $uploadFile)) {
-                require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/infra/configs/session.php';
+                require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/infra/configs/session.php';
                 $sessionManager = SessionManager::getInstance();
                 $selectedFarmId = $sessionManager->getSelectedFarmId();
                 

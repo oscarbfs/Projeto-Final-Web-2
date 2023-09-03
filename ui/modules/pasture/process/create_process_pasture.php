@@ -1,7 +1,7 @@
 <?php
 
-require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/domain/abstracts/templates/process/create_process_template.php';
-require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/ui/business/pasture_business.php';
+require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/domain/abstracts/templates/process/create_process_template.php';
+require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/ui/business/pasture_business.php';
 
 class CreatePastureProcess extends CreateProcessTemplate {
     protected function validateData($postData) {
@@ -31,11 +31,11 @@ class CreatePastureProcess extends CreateProcessTemplate {
         
         if (isset($_FILES['pastureImage']) && $_FILES['pastureImage']['error'] === UPLOAD_ERR_OK) {
 
-            $uploadDir = 'C:/xampp/htdocs/ProjetoFinalWeb2/uploads/';
+            $uploadDir = '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/uploads/';
             $uploadFile = $uploadDir . basename($_FILES['pastureImage']['name']);
             
             if (move_uploaded_file($_FILES['pastureImage']['tmp_name'], $uploadFile)) {
-                require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/infra/configs/session.php';
+                require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/infra/configs/session.php';
                 $sessionManager = SessionManager::getInstance();
                 $selectedFarmId = $sessionManager->getSelectedFarmId();
                 

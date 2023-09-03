@@ -1,7 +1,7 @@
 <?php
 
-require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/domain/abstracts/templates/process/create_process_template.php';
-require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/ui/business/farm_business.php';
+require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/domain/abstracts/templates/process/create_process_template.php';
+require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/ui/business/farm_business.php';
 
 class CreateFarmProcess extends CreateProcessTemplate {
     protected function validateData($postData) {
@@ -25,7 +25,7 @@ class CreateFarmProcess extends CreateProcessTemplate {
         $farmBusiness = new FarmBusiness();
         
         if (isset($_FILES['farmImage']) && $_FILES['farmImage']['error'] === UPLOAD_ERR_OK) {
-            $uploadDir = 'C:/xampp/htdocs/ProjetoFinalWeb2/uploads/';
+            $uploadDir = '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/uploads/';
             $uploadFile = $uploadDir . basename($_FILES['farmImage']['name']);
             
             if (move_uploaded_file($_FILES['farmImage']['tmp_name'], $uploadFile)) {

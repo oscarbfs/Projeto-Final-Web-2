@@ -1,6 +1,6 @@
 <?php
-require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/domain/interfaces/services/bull_interface.php';
-require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/domain/models/querys/bull_query.php';
+require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/domain/interfaces/services/bull_interface.php';
+require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/domain/models/querys/bull_query.php';
 
 class BullService extends IBullService {
     private $dbConnection;

@@ -1,7 +1,7 @@
 <?php
 
-require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/domain/abstracts/templates/process/delete_process_template.php';
-require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/ui/business/farm_business.php'; 
+require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/domain/abstracts/templates/process/delete_process_template.php';
+require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/ui/business/farm_business.php'; 
 
 class DeleteFarmProcess extends DeleteProcessTemplate {
 

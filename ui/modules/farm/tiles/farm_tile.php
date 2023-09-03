@@ -1,5 +1,5 @@
 <?php
-require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/domain/models/mapper/set_farm_mapper.php';
+require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/domain/models/mapper/set_farm_mapper.php';
 
 class FarmTile {
     private SetFarmMapper $farm;
@@ -19,7 +19,7 @@ class FarmTile {
     }
 
     public function generateCard() {
-        $imagePath = str_replace('C:/xampp/htdocs/ProjetoFinalWeb2/', '../../../../', $this->farm->farmImage);
+        $imagePath = str_replace('/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/', '../../../../', $this->farm->farmImage);
 
         $card = '<div class="fazenda-card';
         if ($this->isSelected) {

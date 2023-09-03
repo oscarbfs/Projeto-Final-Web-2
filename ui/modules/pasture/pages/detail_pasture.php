@@ -20,14 +20,14 @@
         if (isset($_GET['pastureId']) && is_numeric($_GET['pastureId'])) {
             $selectedPastureId = $_GET['pastureId'];
 
-            require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/ui/business/pasture_business.php';
+            require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/ui/business/pasture_business.php';
             $pastureBusiness = new PastureBusiness();
 
             try {
                 $selectedPasture = $pastureBusiness->searchPasture($selectedPastureId, null, null)->getPastures()[0];
 
                 if ($selectedPasture) {
-                    $imagePath = str_replace('C:/xampp/htdocs/ProjetoFinalWeb2/', '../../../../', $selectedPasture->pastureImage);
+                    $imagePath = str_replace('/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/', '../../../../', $selectedPasture->pastureImage);
                     
                     echo '<div class="image-container">';
                     echo '<img id="imagePreview" src="' . $imagePath . '" alt="Imagem do Pasto">';

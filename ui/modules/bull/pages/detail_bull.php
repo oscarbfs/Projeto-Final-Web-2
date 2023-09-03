@@ -20,14 +20,14 @@
         if (isset($_GET['bullId']) && is_numeric($_GET['bullId'])) {
             $selectedBullId = $_GET['bullId'];
 
-            require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/ui/business/bull_business.php';
+            require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/ui/business/bull_business.php';
             $bullBusiness = new BullBusiness();
 
             try {
                 $selectedBull = $bullBusiness->searchBull($selectedBullId, null, null, null)->getBulls()[0];
 
                 if ($selectedBull) {
-                    $imagePath = str_replace('C:/xampp/htdocs/ProjetoFinalWeb2/', '../../../../', $selectedBull->bullImage);
+                    $imagePath = str_replace('/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/', '../../../../', $selectedBull->bullImage);
                     
                     echo '<div class="image-container">';
                     echo '<img id="imagePreview" src="' . $imagePath . '" alt="Imagem do Boi">';

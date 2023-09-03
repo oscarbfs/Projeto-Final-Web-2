@@ -1,6 +1,6 @@
 <?php
-require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/infra/configs/DBConnection.php';
-require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/infra/services/bull_service.php';
+require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/infra/configs/DBConnection.php';
+require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/infra/services/bull_service.php';
 
 class BullBusiness {
     private $dbConnection;

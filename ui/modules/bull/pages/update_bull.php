@@ -12,14 +12,14 @@
     if (isset($_GET['bullId']) && is_numeric($_GET['bullId'])) {
         $selectedBullId = $_GET['bullId'];
 
-        require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/ui/business/bull_business.php';
+        require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/ui/business/bull_business.php';
         $bullBusiness = new BullBusiness();
 
         try {
             $selectedBull = $bullBusiness->searchBull($selectedBullId, null, null)->getBulls()[0];
 
             if ($selectedBull) {
-                $imagePath = str_replace('C:/xampp/htdocs/ProjetoFinalWeb2/', '../../../../', $selectedBull->bullImage);
+                $imagePath = str_replace('/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/', '../../../../', $selectedBull->bullImage);
                 echo '<form action="../process/update_process_bull.php" method="post" enctype="multipart/form-data">';
                 echo '<input type="hidden" name="bullId" value="' . $selectedBullId . '">';
                 echo '<input type="hidden" name="oldBullImage" value="' . $selectedBull->bullImage . '">';

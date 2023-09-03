@@ -1,6 +1,6 @@
 <?php
-require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/domain/interfaces/services/pasture_interface.php';
-require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/domain/models/querys/pasture_query.php';
+require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/domain/interfaces/services/pasture_interface.php';
+require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/domain/models/querys/pasture_query.php';
 
 class PastureService extends IPastureService {
     private $dbConnection;

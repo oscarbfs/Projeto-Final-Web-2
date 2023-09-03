@@ -12,14 +12,14 @@
         if (isset($_GET['farmId']) && is_numeric($_GET['farmId'])) {
             $selectedFarmId = $_GET['farmId'];
 
-            require_once 'C:/xampp/htdocs/ProjetoFinalWeb2/ui/business/farm_business.php';
+            require_once '/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/ui/business/farm_business.php';
             $farmBusiness = new FarmBusiness();
 
             try {
                 $selectedFarm = $farmBusiness->searchFarm($selectedFarmId, null)->getFarms()[0];
 
                 if ($selectedFarm) {
-                    $imagePath = str_replace('C:/xampp/htdocs/ProjetoFinalWeb2/', '../../../../', $selectedFarm->farmImage);
+                    $imagePath = str_replace('/Applications/XAMPP/xamppfiles/htdocs/Projeto-Final-Web-2/', '../../../../', $selectedFarm->farmImage);
                     echo '<form action="../process/update_process_farm.php" method="post" enctype="multipart/form-data">';
                     echo '<input type="hidden" name="farmId" value="' . $selectedFarmId . '">';
                     echo '<input type="hidden" name="oldFarmImage" value="' . $selectedFarm->farmImage . '">';
